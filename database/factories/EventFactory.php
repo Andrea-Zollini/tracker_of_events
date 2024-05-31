@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Event>
@@ -18,8 +19,8 @@ class EventFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name,
-            'user_id' => User::factory(),
+            'name' => $this->faker->sentence,
+            'user_id' => Auth::id() ?? User::all()->random()->id,
             'description' => $this->faker->realText(),
             'venue' => $this->faker->lastName() . ' stadium',
             'start_date' => $this->faker->dateTimeThisDecade->format('Y-m-d'),

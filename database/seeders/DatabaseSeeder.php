@@ -14,10 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Event::factory(10)->create();
-        // User::factory()->create([
-        //     'name' => 'Giuseppe Meazza',
-        //     'email' => 'peppe@test.com',
-        // ]);
+        $this->call([
+            UsersTableSeeder::class,
+            EventTableSeeder::class,
+        ]);
     }
 }
