@@ -17,6 +17,11 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->ulid('id')->primary();
 
+            $table->unsignedInteger('user_id')
+                ->constrained()
+                ->index()
+                ->cascadeOnDelete();
+
             $table->string('name');
             $table->text('description');
             $table->string('venue');
